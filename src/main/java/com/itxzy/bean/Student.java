@@ -3,19 +3,19 @@ package com.itxzy.bean;
 public class Student {
 
     private Integer id;
-    private Long create_at;
+    private Long createAt;
     private String name;
     private String qq;
     private String type;
     private String city;
-    private Long enter_at;
+    private Long enterAt;
     private String school;
-    private Integer online_id;
+    private Integer onlineId;
     private String link;
     private String desire;
     private String bro;
-    private Long update_at;
-    private String know_from;
+    private Long updateAt;
+    private String knowFrom;
 
     public Integer getId() {
         return id;
@@ -25,12 +25,12 @@ public class Student {
         this.id = id;
     }
 
-    public Long getCreate_at() {
-        return create_at;
+    public Long getCreateAt() {
+        return createAt;
     }
 
-    public void setCreate_at(Long create_at) {
-        this.create_at = create_at;
+    public void setCreateAt(Long createAt) {
+        this.createAt = createAt;
     }
 
     public String getName() {
@@ -65,12 +65,12 @@ public class Student {
         this.city = city;
     }
 
-    public Long getEnter_at() {
-        return enter_at;
+    public Long getEnterAt() {
+        return enterAt;
     }
 
-    public void setEnter_at(Long enter_at) {
-        this.enter_at = enter_at;
+    public void setEnterAt(Long enterAt) {
+        this.enterAt = enterAt;
     }
 
     public String getSchool() {
@@ -81,12 +81,12 @@ public class Student {
         this.school = school;
     }
 
-    public Integer getOnline_id() {
-        return online_id;
+    public Integer getOnlineId() {
+        return onlineId;
     }
 
-    public void setOnline_id(Integer online_id) {
-        this.online_id = online_id;
+    public void setOnlineId(Integer onlineId) {
+        this.onlineId = onlineId;
     }
 
     public String getLink() {
@@ -113,39 +113,39 @@ public class Student {
         this.bro = bro;
     }
 
-    public Long getUpdate_at() {
-        return update_at;
+    public Long getUpdateAt() {
+        return updateAt;
     }
 
-    public void setUpdate_at(Long update_at) {
-        this.update_at = update_at;
+    public void setUpdateAt(Long updateAt) {
+        this.updateAt = updateAt;
     }
 
-    public String getKnow_from() {
-        return know_from;
+    public String getKnowFrom() {
+        return knowFrom;
     }
 
-    public void setKnow_from(String know_from) {
-        this.know_from = know_from;
+    public void setKnowFrom(String knowFrom) {
+        this.knowFrom = knowFrom;
     }
 
     @Override
     public String toString() {
         return "Student{" +
                 "id=" + id +
-                ", create_at=" + create_at +
+                ", createAt=" + createAt +
                 ", name='" + name + '\'' +
                 ", qq='" + qq + '\'' +
                 ", type='" + type + '\'' +
                 ", city='" + city + '\'' +
-                ", enter_at=" + enter_at +
+                ", enterAt=" + enterAt +
                 ", school='" + school + '\'' +
-                ", online_id=" + online_id +
+                ", onlineId=" + onlineId +
                 ", link='" + link + '\'' +
                 ", desire='" + desire + '\'' +
                 ", bro='" + bro + '\'' +
-                ", update_at=" + update_at +
-                ", know_from='" + know_from + '\'' +
+                ", updateAt=" + updateAt +
+                ", knowFrom='" + knowFrom + '\'' +
                 '}';
     }
 }
