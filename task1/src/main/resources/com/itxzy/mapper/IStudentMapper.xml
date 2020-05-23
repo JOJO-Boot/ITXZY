@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itxzy.mapper.IStudentMapper">
+    <!--增加-->
+    <insert id="insertStudent" parameterType="com.itxzy.bean.Student">
+        INSERT INTO tbStudent
+        (createAt,
+        name,
+        qq,
+        type,
+        city,
+        enterAt,
+        school,
+        onlineId,
+        link,
+        desire,
+        bro,
+        updateAt,
+        know_from )
+        VALUES
+        (#{createAt},
+        #{name},
+        #{qq},
+        #{type},
+        #{city},
+        #{enterAt},
+        #{school},
+        #{onlineId},
+        #{link},
+        #{desire},
+        #{bro},
+        #{updateAt},
+        #{knowFrom})
+    </insert>
+
+    <!--删除-->
+    <delete id="deleteStudent" parameterType="Integer">
+        DELETE FROM tbStudent WHERE id =#{id}
+    </delete>
+
+    <!--修改-->
+    <update id="updateStudent" parameterType="com.itxzy.bean.Student">
+        UPDATE tbStudent SET
+        createAt=#{createAt},
+        name=#{name},
+        qq=#{qq},
+        type=#{type},
+        city=#{city},
+        enterAt=#{enterAt},
+        school=#{school},
+        onlineId=#{onlineId},
+        link=#{link},
+        desire=#{desire},
+        bro=#{bro},
+        updateAt=#{updateAt},
+        knowFrom=#{knowFrom}
+        WHERE
+        id=#{id}
+    </update>
+
+    <!--id查询-->
+    <select id="findStudentById" parameterType="Integer" resultType="com.itxzy.bean.Student">
+        SELECT * FROM tbStudent WHERE id = #{sid}
+    </select>
+
+    <!--名字查询-->
+    <select id="findStudentByName" parameterType="String" resultType="com.itxzy.bean.Student">
+        SELECT * FROM tbStudent WHERE name LIKE #{name}
+    </select>
+</mapper>
