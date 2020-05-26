@@ -23,5 +23,5 @@
         <property name="prefix" value="/WEB-INF/jsp/" /><!--文件路径-->
         <property name="suffix" value=".jsp" /><!--文件类型-->
     </bean>
-
+    <mvc:default-servlet-handler/>
 </beans>
