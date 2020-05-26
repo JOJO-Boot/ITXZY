@@ -2,6 +2,7 @@ package com.controller;
 
 import com.bean.Student;
 import com.service.IStudentService;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +16,7 @@ import java.util.List;
 @RequestMapping(value = "/student")
 public class StudentController {
     //导入日志
-//    private static Logger logger = Logger.getLogger(StudentController.class);
+    private static Logger logger = Logger.getLogger(StudentController.class);
 
     @Resource(name = "studentService")
     private IStudentService iStudentService;
