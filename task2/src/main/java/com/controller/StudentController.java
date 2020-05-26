@@ -16,7 +16,7 @@ import java.util.List;
 @RequestMapping(value = "/student")
 public class StudentController {
     //导入日志
-    private static Logger logger = Logger.getLogger(StudentController.class);
+//    private static Logger logger = Logger.getLogger(StudentController.class);
 
     @Resource(name = "studentService")
     private IStudentService iStudentService;
