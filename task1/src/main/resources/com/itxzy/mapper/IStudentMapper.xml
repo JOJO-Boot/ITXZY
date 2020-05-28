@@ -5,7 +5,7 @@
 <mapper namespace="com.itxzy.mapper.IStudentMapper">
     <!--增加-->
     <insert id="insertStudent" parameterType="com.itxzy.bean.Student">
-        INSERT INTO tbStudent
+        INSERT INTO tbstudent
         (createAt,
         name,
         qq,
@@ -18,7 +18,7 @@
         desire,
         bro,
         updateAt,
-        know_from )
+        knowFrom )
         VALUES
         (#{createAt},
         #{name},
@@ -37,12 +37,12 @@
 
     <!--删除-->
     <delete id="deleteStudent" parameterType="Integer">
-        DELETE FROM tbStudent WHERE id =#{id}
+        DELETE FROM tbstudent WHERE id =#{id}
     </delete>
 
     <!--修改-->
     <update id="updateStudent" parameterType="com.itxzy.bean.Student">
-        UPDATE tbStudent SET
+        UPDATE tbstudent SET
         createAt=#{createAt},
         name=#{name},
         qq=#{qq},
@@ -62,11 +62,11 @@
 
     <!--id查询-->
     <select id="findStudentById" parameterType="Integer" resultType="com.itxzy.bean.Student">
-        SELECT * FROM tbStudent WHERE id = #{sid}
+        SELECT * FROM tbstudent WHERE id = #{sid}
     </select>
 
     <!--名字查询-->
     <select id="findStudentByName" parameterType="String" resultType="com.itxzy.bean.Student">
-        SELECT * FROM tbStudent WHERE name LIKE #{name}
+        SELECT * FROM tbstudent WHERE name LIKE #{name}
     </select>
 </mapper>

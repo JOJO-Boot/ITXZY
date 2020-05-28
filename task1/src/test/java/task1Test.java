@@ -50,7 +50,7 @@ public class task1Test{
         student.setOnlineId(6569);
         student.setLink("http://www.jnshu.com/school/39787/daily?page=1&orderBy=3&sort=1");
         student.setDesire("加油");
-        student.setBro("周自辉");
+        student.setBro("孙壮壮");
         student.setUpdateAt(startTs);
         student.setKnowFrom("知乎");
         iStudentMapper.insertStudent(student);
@@ -62,7 +62,7 @@ public class task1Test{
      */
     @Test
     public void deleteStudent(){
-        iStudentMapper.deleteStudent(3);
+        iStudentMapper.deleteStudent(38);
         System.out.println("已经删除数据");
     }
 
@@ -75,7 +75,7 @@ public class task1Test{
         Calendar calendar = Calendar.getInstance();
         calendar.set(2019,5,8);
 
-        Student student = iStudentMapper.findStudentById(4);
+        Student student = iStudentMapper.findStudentById(35);
         student.setCreateAt(startTs);
         student.setName("wang");
         student.setQq("123");
@@ -109,7 +109,7 @@ public class task1Test{
      */
     @Test
     public void findStudentById(){
-        Student student = iStudentMapper.findStudentById(1);
+        Student student = iStudentMapper.findStudentById(36);
         System.out.println(student);
     }
 
