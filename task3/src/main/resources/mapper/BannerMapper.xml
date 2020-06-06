@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.BannerMapper">
+  <!--增加-->
+  <insert id="insertBanner" parameterType="com.pojo.Banner">
+        INSERT INTO tbbanner
+        (url
+         )
+        VALUES
+        (#{url}
+        )
+    </insert>
+  <!--删除-->
+  <delete id="deleteById" parameterType="Long">
+    DELETE FROM tbbanner WHERE id = #{id}
+  </delete>
+  <!--修改-->
+  <update id="updateBanner" parameterType="com.pojo.Banner">
+    UPDATE tbbanner SET
+    url = #{url}
+    WHERE id = #{id}
+  </update>
+  <!--id查询-->
+  <select id="findById" parameterType="Long" resultType="com.pojo.Banner">
+    SELECT * FROM tbbanner WHERE id = #{bid}
+  </select>
+</mapper>
