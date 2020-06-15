@@ -5,16 +5,16 @@
 
 <tiles-definitions>
     <!-- 基础模板 -->
-    <definition name="mainLayout" template="/WEB-INF/jsp/layout.jsp">
-        <put-attribute name="a" value="/WEB-INF/jsp/head.jsp" />
-        <put-attribute name="c" value="/WEB-INF/jsp/foot.jsp" />
+    <definition name="mainLayout" template="/jsp/layout.jsp">
+        <put-attribute name="a" value="/jsp/head.jsp" />
+        <put-attribute name="c" value="/jsp/foot.jsp" />
     </definition>
     <!-- 第一个页面 -->
     <definition name="body1" extends="mainLayout">
-        <put-attribute name="b" value="/WEB-INF/jsp/body1.jsp" />
+        <put-attribute name="b" value="/jsp/body1.jsp" />
     </definition>
     <!--第二个页面-->
     <definition name="body2" extends="mainLayout">
-        <put-attribute name="b" value="/WEB-INF/jsp/body2.jsp" />
+        <put-attribute name="b" value="/jsp/body2.jsp" />
     </definition>
 </tiles-definitions>
