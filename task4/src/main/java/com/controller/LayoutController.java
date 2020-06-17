@@ -10,18 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class LayoutController {
 
-//    @Autowired
-//    private StudentService studentService;
-
-    @RequestMapping("/home")//为控制器指定可以处理的请求URL
-    public String hello(){
+    @RequestMapping("/home")
+    public String home(Model model){
+        model.addAttribute("position","山主");
+        model.addAttribute("name","陈好人");
+        model.addAttribute("description","真滴强");
         return "body1";
     }
-
-//    @RequestMapping("/home")
-//    public String home(Long id,Model model){
-//        Student student = studentService.selectByPrimaryKey(id);
-//        model.addAttribute("student",student);
-//        return "body1";
-//    }
 }
