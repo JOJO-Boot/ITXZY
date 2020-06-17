@@ -6,15 +6,10 @@ import com.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class StudentServiceImp implements StudentService {
-
     @Autowired
     private StudentMapper studentMapper;
-
-
     @Override
     public int deleteByPrimaryKey(Long id) {
         return studentMapper.deleteByPrimaryKey(id);
@@ -36,13 +31,8 @@ public class StudentServiceImp implements StudentService {
     }
 
     @Override
-    public List<Student> selectByHot(Long hot) {
-        return studentMapper.selectByHot(hot);
-    }
-
-    @Override
     public int updateByPrimaryKeySelective(Student record) {
-        return studentMapper.updateByPrimaryKey(record);
+        return studentMapper.updateByPrimaryKeySelective(record);
     }
 
     @Override

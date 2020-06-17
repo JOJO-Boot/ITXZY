@@ -11,9 +11,7 @@ public class Student {
 
     private String description;
 
-    private Integer hot;
-
-    private Long salary;
+    private Long hot;
 
     private Long createat;
 
@@ -59,20 +57,12 @@ public class Student {
         this.description = description == null ? null : description.trim();
     }
 
-    public Integer getHot() {
+    public Long getHot() {
         return hot;
     }
 
-    public void setHot(Integer hot) {
+    public void setHot(Long hot) {
         this.hot = hot;
-    }
-
-    public Long getSalary() {
-        return salary;
-    }
-
-    public void setSalary(Long salary) {
-        this.salary = salary;
     }
 
     public Long getCreateat() {

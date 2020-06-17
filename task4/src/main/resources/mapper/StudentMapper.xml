@@ -7,27 +7,18 @@
     <result column="position" jdbcType="VARCHAR" property="position" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="description" jdbcType="VARCHAR" property="description" />
-    <result column="hot" jdbcType="INTEGER" property="hot" />
-    <result column="salary" jdbcType="BIGINT" property="salary" />
+    <result column="hot" jdbcType="BIGINT" property="hot" />
     <result column="createAt" jdbcType="BIGINT" property="createat" />
     <result column="updateAt" jdbcType="BIGINT" property="updateat" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, img, position, name, description, hot, salary, createAt, updateAt
+    id, img, position, name, description, hot, createAt, updateAt
   </sql>
-
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from student
     where id = #{id,jdbcType=BIGINT}
-  </select>
-
-  <select id="selectByHot" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List"/>
-    from student
-    where hot = #{hot,jdbcType=INT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from student
@@ -36,12 +27,10 @@
   <insert id="insert" parameterType="com.pojo.Student">
     insert into student (id, img, position, 
       name, description, hot, 
-      salary, createAt, updateAt
-      )
+      createAt, updateAt)
     values (#{id,jdbcType=BIGINT}, #{img,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
-      #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{hot,jdbcType=INTEGER}, 
-      #{salary,jdbcType=BIGINT}, #{createat,jdbcType=BIGINT}, #{updateat,jdbcType=BIGINT}
-      )
+      #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{hot,jdbcType=BIGINT}, 
+      #{createat,jdbcType=BIGINT}, #{updateat,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.pojo.Student">
     insert into student
@@ -63,9 +52,6 @@
       </if>
       <if test="hot != null">
         hot,
-      </if>
-      <if test="salary != null">
-        salary,
       </if>
       <if test="createat != null">
         createAt,
@@ -91,10 +77,7 @@
         #{description,jdbcType=VARCHAR},
       </if>
       <if test="hot != null">
-        #{hot,jdbcType=INTEGER},
-      </if>
-      <if test="salary != null">
-        #{salary,jdbcType=BIGINT},
+        #{hot,jdbcType=BIGINT},
       </if>
       <if test="createat != null">
         #{createat,jdbcType=BIGINT},
@@ -120,10 +103,7 @@
         description = #{description,jdbcType=VARCHAR},
       </if>
       <if test="hot != null">
-        hot = #{hot,jdbcType=INTEGER},
-      </if>
-      <if test="salary != null">
-        salary = #{salary,jdbcType=BIGINT},
+        hot = #{hot,jdbcType=BIGINT},
       </if>
       <if test="createat != null">
         createAt = #{createat,jdbcType=BIGINT},
@@ -140,8 +120,7 @@
       position = #{position,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},
-      hot = #{hot,jdbcType=INTEGER},
-      salary = #{salary,jdbcType=BIGINT},
+      hot = #{hot,jdbcType=BIGINT},
       createAt = #{createat,jdbcType=BIGINT},
       updateAt = #{updateat,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
