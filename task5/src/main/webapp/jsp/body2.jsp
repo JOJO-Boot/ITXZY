@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <link href="${pageContext.request.contextPath}css/t11.css" rel="stylesheet" type="text/css">
-    <link href=${pageContext.request.contextPath}css/base.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/css/t11.css" rel="stylesheet" type="text/css">
+    <link href=${pageContext.request.contextPath}/css/base.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -25,7 +25,7 @@
 
         <div class="warp-border">
             <div class="clearfix">
-                <div class="icon-people"><img src="${pageContext.request.contextPath}images/687.png"></div>
+                <div class="icon-people"><img src="${pageContext.request.contextPath}/images/687.png"></div>
                 <div class="text">
                     <h4 class="">Web前端工程师</h4>
                     <p class="text-present">Web前端开发工程师，主要职责是利用(X)HTML/CSS/JavaScript/flash等各种Web技术进行产品的开发。</p>
@@ -34,10 +34,10 @@
 
             <div class="warp-class2">
                 <div class="warp-class2-text">
-                    <div class="iconfont text-padding">门槛 <img src="${pageContext.request.contextPath}images/xx.png"></div>
+                    <div class="iconfont text-padding">门槛 <img src="${pageContext.request.contextPath}/images/xx.png"></div>
                 </div>
                 <div class="warp-class2-text">
-                    <div class="iconfont text-padding text-border-left">难易程度 <img src="${pageContext.request.contextPath}images/xx.png"><img src="${pageContext.request.contextPath}images/xx.png"></div>
+                    <div class="iconfont text-padding text-border-left">难易程度 <img src="${pageContext.request.contextPath}/images/xx.png"><img src="${pageContext.request.contextPath}/images/xx.png"></div>
                 </div>
             </div>
             <div class="warp-class2">
@@ -84,6 +84,6 @@
     </div>
 </div>
 </body>
-<script src="${pageContext.request.contextPath}js/jquery.min.js"></script>
-<script  src=${pageContext.request.contextPath}js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+<script  src=${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 </html>

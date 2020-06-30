@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>无标题文档</title>
-    <link href="${pageContext.request.contextPath}css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="${pageContext.request.contextPath}css/bootstrap-3.3.5-dist/css/bootstrap.css">
-    <link href="${pageContext.request.contextPath}css/Untitled-3.css" rel="stylesheet" type="text/css">
-    <link href="${pageContext.request.contextPath}css/Untitled-1base.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/css/bootstrap-3.3.5-dist/css/bootstrap.css">
+    <link href="${pageContext.request.contextPath}/css/Untitled-3.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/css/Untitled-1base.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
@@ -32,7 +32,7 @@
             </div>
             <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 up-3">
                 <p>微信公众平台</p>
-                <img alt="" src="${pageContext.request.contextPath}images/2524.jpg">
+                <img alt="" src="${pageContext.request.contextPath}/images/2524.jpg">
             </div>
         </div>
     </div>
@@ -41,6 +41,6 @@
     </div>
 </div>
 </body>
-<script src="${pageContext.request.contextPath}js/jquery.min.js"></script>
-<script  src="${pageContext.request.contextPath}js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+<script  src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 </html>
