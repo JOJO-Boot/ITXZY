@@ -16,7 +16,7 @@
 </form>
 <br></br>
 <br></br>
-<a href="/toLogin"> <input type="button" value="已有账户？点我登录"> </a>
+<a href="${pageContext.request.contextPath}/toLogin"> <input type="button" value="已有账户？点我登录"> </a>
 ${mes}
 </body>
 </html>
