@@ -55,7 +55,7 @@ public class LoginInterceptor implements HandlerInterceptor {
             //如果用户为空，返回登录界面
             if (user1 == null){
                 logger.info("没有此token内所含Id的用户,必须去登录");
-                response.sendRedirect("/beforeLogin");
+                response.sendRedirect("/toLogin");
                 return false;
             }
 
@@ -73,7 +73,7 @@ public class LoginInterceptor implements HandlerInterceptor {
             if (System.currentTimeMillis() - time >= 30 * 60 * 1000) {
                 System.out.println("token过期=====");
                 //返回登录页面
-                response.sendRedirect("/beforeLogin");
+                response.sendRedirect("/toLogin");
                 return false;
             }
 
@@ -84,7 +84,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         }else {
             //用户有cookies
             logger.info("有cookie");
-            //遍历一下用户的cookies,放入cookie,看看他的cookie是什么呀
+            //遍历一下用户的cookies,放入cookie,看看他的cookie是什么
             for (Cookie cookie: cookies){
                 //如果他的cookie与我发给他的cookie相等,就可以直接返到页面里
                 if (cookie.getName().equals("token")){
@@ -114,7 +114,7 @@ public class LoginInterceptor implements HandlerInterceptor {
                     //如果用户为空，返回登录界面
                     if (user2 == null){
                         logger.info("没有此token内所含Id的用户,必须去登录");
-                        response.sendRedirect("/beforeLogin");
+                        response.sendRedirect("/toLogin");
                         return  false;
                     }
                     //token根据 | 拆分出的第三个（用户登陆时间）
@@ -127,7 +127,7 @@ public class LoginInterceptor implements HandlerInterceptor {
                     if (System.currentTimeMillis() - time >= 30 * 60 * 1000) {
                         System.out.println("token过期=====");
                         //返回登录页面
-                        response.sendRedirect("/beforeLogin");
+                        response.sendRedirect("/toLogin");
                         return false;
                     }
                     logger.info("token（id,有效期）验证通过，登录成功");
@@ -136,7 +136,7 @@ public class LoginInterceptor implements HandlerInterceptor {
             }
         }
         //返回登录页面
-        response.sendRedirect("/beforeLogin");
+        response.sendRedirect("/toLogin");
         return false;
     }
 

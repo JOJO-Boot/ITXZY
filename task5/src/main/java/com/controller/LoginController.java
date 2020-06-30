@@ -2,6 +2,7 @@ package com.controller;
 
 import com.pojo.User;
 import com.service.UserService;
+import org.springframework.ui.Model;
 import org.springframework.util.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import util.DESUtil;
 import util.MD5Util;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
@@ -20,18 +22,18 @@ public class LoginController {
 
     DESUtil des = new DESUtil();
     MD5Util MD5 = new MD5Util();
-    @RequestMapping(value = "/beforeLogin")
-    public String beforeLogin(User user){
+    @RequestMapping(value = "/toLogin")
+    public String beforeLogin(){
         return "login";
     }
 
-    @RequestMapping(value = "beforeRegister")
-    public String beforeRegister(User user){
+    @RequestMapping(value = "/toRegister")
+    public String beforeRegister(){
         return "register";
     }
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public String login(User user, HttpServletResponse response) throws Exception{
+    public String login(User user, HttpServletResponse response, Model model) throws Exception{
 
         String u = user.getUsername();
         String p = user.getPassword();
@@ -48,7 +50,7 @@ public class LoginController {
                     System.out.println("密码正确");
                     //把用户转化为long类型
                     int BId = user2.getId();
-                    long B = (int)BId;
+                    long B = BId;
 
                     //对用户id进行加密
                     String desId = des.encryptFromLong(B);
@@ -67,34 +69,36 @@ public class LoginController {
                     Cookie tokenCookie = new Cookie("token", token);
 
                     //设置cookie存在时间
-                    //nameCookie.setMaxAge(30*60);
                     tokenCookie.setMaxAge(30 * 60);
 
                     //向客户端返回cookie
-                    //response.addCookie(nameCookie);
                     response.addCookie(tokenCookie);
 
                     //把token放到header头里
                     //response.setHeader("token",token)
 
                     System.out.println("登录成功，正在进入页面");
-                    return "body1";
+                    model.addAttribute("mes","登录成功");
+                    return "redirect:/u/profession";
                 }else {
                     System.out.println("密码错误。请重新输入");
+                    model.addAttribute("mes","密码错误,请重新输入");
                     return "login";
                 }
             }else {
                 System.out.println("用户名不存在，请重新输入");
+                model.addAttribute("mes","用户名不存在，请重新输入");
                 return "login";
             }
         }else {
             System.out.println("用户名不能为空");
+            model.addAttribute("mes","用户名不能为空");
             return "login";
         }
     }
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)
-    public String register(User user){
+    public String register(User user,Model model){
         System.out.println("输入对象为" + user);
 
         String u = user.getUsername();
@@ -124,23 +128,45 @@ public class LoginController {
                     int id = userService.addUser(user);
 
                     System.out.print("注册成功，请登录");
+
                     //返回到登录页面
                     return "login";
 
                 }catch (Exception e){
                     System.out.print("注册失败，请重新填写注册信息");
+                    model.addAttribute("mes","注册失败，请重新填写注册信息");
                     return "register";
                 }
 
             }else {
                 System.out.print("用户名已经存在，请更换用户名");
+                model.addAttribute("mes","用户名已经存在，请更换用户名");
                 return "register";
             }
 
         }else{
             System.out.print("用户名不能为空");
+            model.addAttribute("mes","用户名不能为空");
             return "register";
         }
+    }
+
+    //注销按钮
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout(HttpServletResponse response, HttpServletRequest Request) {
+//创建一个cookie对象,得到cookie
+        Cookie[] cookies = Request.getCookies();
+        //先取出cookie
+        for (Cookie cookie : cookies) {
+//如果存在name为token的cookie,则取出并修改token的时效为0
+            if (cookie.getName().equals("token")) {
+                cookie.setMaxAge(0);
+                System.out.println("被删除的token是" + cookie.getName());
+                response.addCookie(cookie);
+                return "redirect:/home";
+            }
+        }
+        return "redirect:/home";
     }
 
 }

@@ -14,10 +14,15 @@ public class HomeController {
  @Autowired
  private StudentService studentService;
 
-    @RequestMapping(value = "/u/home",method = RequestMethod.GET)
+    @RequestMapping(value = "/home",method = RequestMethod.GET)
     public String home(Model model){
         List<Student> studentList = studentService.selectByHot(1);
         model.addAttribute("studentList",studentList);
         return "body1";
     }
+    @RequestMapping(value = "/u/profession",method = RequestMethod.GET)
+    public String profession(){
+        return "body2";
+    }
+
 }
