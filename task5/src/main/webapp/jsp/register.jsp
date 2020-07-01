@@ -9,14 +9,14 @@
 <hr style="height:1px;border:none;border-top:1px solid #555555;" />
 <br></br>
 
-<form action="/register" name="account" method="post">
+<form action="register"  method="post">
     用户名:<input type="text" name="username">
     密码:<input type="text" name="password" >
     <input type="submit" value="注册">
 </form>
 <br></br>
 <br></br>
-<a href="/task5/toLogin"> <input type="button" value="已有账户？点我登录"> </a>
+<a href="/toLogin"> <input type="button" value="已有账户？点我登录"> </a>
 ${mes}
 </body>
 </html>

@@ -23,15 +23,23 @@ public class LoginController {
     DESUtil des = new DESUtil();
     MD5Util MD5 = new MD5Util();
     @RequestMapping(value = "/toLogin")
-    public String beforeLogin(){
+    public String toLogin(){
         return "login";
     }
 
     @RequestMapping(value = "/toRegister")
-    public String beforeRegister(){
+    public String toRegister(){
         return "register";
     }
 
+    /**
+     * 登录
+     * @param user
+     * @param response
+     * @param model
+     * @return
+     * @throws Exception
+     */
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public String login(User user, HttpServletResponse response, Model model) throws Exception{
 
@@ -81,22 +89,28 @@ public class LoginController {
                     model.addAttribute("mes","登录成功");
                     return "redirect:/u/profession";
                 }else {
-                    System.out.println("密码错误。请重新输入");
+                    System.out.println("密码错误,请重新输入");
                     model.addAttribute("mes","密码错误,请重新输入");
-                    return "login";
+                    return "redirect:/toLogin";
                 }
             }else {
                 System.out.println("用户名不存在，请重新输入");
                 model.addAttribute("mes","用户名不存在，请重新输入");
-                return "login";
+                return "redirect:/toLogin";
             }
         }else {
             System.out.println("用户名不能为空");
             model.addAttribute("mes","用户名不能为空");
-            return "login";
+            return "redirect:/toLogin";
         }
     }
 
+    /**
+     * 注册
+     * @param user
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/register",method = RequestMethod.POST)
     public String register(User user,Model model){
         System.out.println("输入对象为" + user);
@@ -130,24 +144,21 @@ public class LoginController {
                     System.out.print("注册成功，请登录");
 
                     //返回到登录页面
-                    return "login";
-
+                    return "redirect:/toLogin";
                 }catch (Exception e){
                     System.out.print("注册失败，请重新填写注册信息");
                     model.addAttribute("mes","注册失败，请重新填写注册信息");
-                    return "register";
+                    return "redirect:/toRegister";
                 }
-
             }else {
                 System.out.print("用户名已经存在，请更换用户名");
                 model.addAttribute("mes","用户名已经存在，请更换用户名");
-                return "register";
+                return "redirect:/toRegister";
             }
-
         }else{
             System.out.print("用户名不能为空");
             model.addAttribute("mes","用户名不能为空");
-            return "register";
+            return "redirect:/toRegister";
         }
     }
 

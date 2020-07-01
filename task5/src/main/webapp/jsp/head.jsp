@@ -27,7 +27,7 @@
     <div class="container">
         <div class="navbar-header">
             <a href="#" class="navbar-brand">
-                <img src="${pageContext.request.contextPath}images/logo.png" alt="Brand" class="img-responsive">
+                <img src="${pageContext.request.contextPath}/images/logo.png" alt="Brand" class="img-responsive">
             </a>
             <button data-target="#open-nav" data-toggle="collapse" class="navbar-toggle btn-primary collapsed" aria-expanded="false">
                 <span class="icon-bar"></span>
