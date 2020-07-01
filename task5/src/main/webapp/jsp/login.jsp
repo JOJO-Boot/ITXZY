@@ -14,7 +14,7 @@
     <input type="submit" value="登录">
 </form>
 <br></br>
-<a href="/toRegister"> <input type="button" value="还没有账号，点我注册"> </a>
+<a href="toRegister"> <input type="button" value="还没有账号，点我注册"> </a>
 ${mes}
 </body>
 </html>
