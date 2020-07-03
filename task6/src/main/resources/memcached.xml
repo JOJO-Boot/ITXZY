@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.1.xsd ">
+    <!--加载配置文件-->
+    <context:property-placeholder location="classpath:properties/memcached.properties"/>
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="order" value="1"/>
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="locations">
+            <list>
+                <value>classpath:properties/memcached.properties</value>
+            </list>
+        </property>
+    </bean>
+    <!-- Memcached配置 -->
+    <bean   id="memcachedClientBuilder" class="net.rubyeye.xmemcached.XMemcachedClientBuilder">
+      <!--节点-->
+        <constructor-arg>
+            <list>
+                <bean class="java.net.InetSocketAddress">
+                    <constructor-arg>
+                        <value>${memcached.server1.host}</value>
+                    </constructor-arg>
+                    <constructor-arg>
+                        <value>${memcached.server1.port}</value>
+                    </constructor-arg>
+                </bean>
+            </list>
+        </constructor-arg>
+        <!--对应的节点权重-->
+        <constructor-arg>
+            <list>
+                <value>${memcached.server1.weight}</value>
+            </list>
+        </constructor-arg>
+        <!--协议工厂-->
+        <property name="commandFactory" >
+            <bean class="net.rubyeye.xmemcached.command.TextCommandFactory" />
+        </property>
+        <!--分布策略-->
+        <property name="sessionLocator" >
+            <bean class="net.rubyeye.xmemcached.impl.KetamaMemcachedSessionLocator" />
+        </property>
+        <!--序列化转换器-->
+        <property name="transcoder" >
+            <bean class="net.rubyeye.xmemcached.transcoders.SerializingTranscoder" />
+        </property>
+        <!--nio连接池大小-->
+        <property name="connectionPoolSize" value="${memcached.connectionPoolSize}" />
+        <!-- 是否启用failure模式，true为启用，默认不启用 -->
+        <property name="failureMode" value="${memcached.failureMode}" />
+    </bean>
+    <!--使用工厂构建memcached客户端-->
+    <bean id="memcachedClient" factory-bean="memcachedClientBuilder" factory-method="build"  destroy-method="shutdown" />
+</beans>
