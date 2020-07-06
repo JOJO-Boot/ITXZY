@@ -29,7 +29,7 @@ pageEncoding="UTF-8" isErrorPage="true" isELIgnored="false" %>
         <li class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
             <div>
                 <img src="${pageContext.request.contextPath}/images/242424.png">
-                <span>技术顾问:罗大佑</span>
+                <span>${student}</span>
                 <p class="text-left">百度技术总监：互联网基础服务领域，从事虚拟主机，云主机，域名。
                     曾任新网高级技术经理，负责技术研发，团队管理与建设。</p>
             </div>

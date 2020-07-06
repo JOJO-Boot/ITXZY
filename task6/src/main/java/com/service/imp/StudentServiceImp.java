@@ -6,6 +6,7 @@ import com.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import util.MemcachedUtil;
+import util.RedisUtil;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
 public class StudentServiceImp implements StudentService {
 
     MemcachedUtil memcachedUtil = new MemcachedUtil();
+    RedisUtil redisUtil = new RedisUtil();
 
     @Autowired
     StudentMapper studentMapper;
@@ -32,11 +34,19 @@ public class StudentServiceImp implements StudentService {
         return studentMapper.insertSelective(record);
     }
 
+    //Redis
     @Override
     public Student selectByPrimaryKey(Long id) {
+        if(redisUtil.get("key2") != null){
+            System.out.println("redis获取优秀学生");
+        }else {
+            redisUtil.set("key2",studentMapper.selectByPrimaryKey((long) 1).getName());
+            System.out.println("redis添加学生");
+        }
         return studentMapper.selectByPrimaryKey(id);
     }
 
+    //Memcached
     @Override
     public List<Student> selectByHot(Integer hot) {
         if (memcachedUtil.get("hot")!= null){
