@@ -43,10 +43,10 @@ public class OssService {
     // endpoint是访问OSS的域名。如果您已经在OSS的控制台上 创建了Bucket，请在控制台上查看域名。
     // endpoint的格式形如“http://oss-cn-hangzhou.aliyuncs.com/”，注意http://后不带bucket名称，
     private static String endpoint = "http://oss-cn-beijing.aliyuncs.com";
-    private static String accessKeyId = "LTAI4Fy6d5zNufgGun4WYprY";
-    private static String accessKeySecret = "6auTJl31zo6UdoyqQFZZAUyQbx7BFO";
+    private static String accessKeyId = "";
+    private static String accessKeySecret = "";
     // Bucket命名规范如下：只能包括小写字母，数字和短横线（-），必须以小写字母或者数字开头，长度必须在3-63字节之间。
-    private static String bucketName = "qzn2077";
+    private static String bucketName = "";
     // Object命名规范如下：使用UTF-8编码，长度必须在1-1023字节之间，不能以“/”或者“\”字符开头。
     private static String firstKey = "my-first-key";
 
