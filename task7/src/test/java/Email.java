@@ -17,7 +17,7 @@ public class Email {
     @Test
     public void sample() {
 // 如果是除杭州region外的其它region（如新加坡、澳洲Region），需要将下面的"cn-hangzhou"替换为"ap-southeast-1"、或"ap-southeast-2"。
-        IClientProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAI4Fy6d5zNufgGun4WYprY", "6auTJl31zo6UdoyqQFZZAUyQbx7BFO");
+        IClientProfile profile = DefaultProfile.getProfile();
         // 如果是除杭州region外的其它region（如新加坡region）， 需要做如下处理
         //try {
         //DefaultProfile.addEndpoint("dm.ap-southeast-1.aliyuncs.com", "ap-southeast-1", "Dm",  "dm.ap-southeast-1.aliyuncs.com");

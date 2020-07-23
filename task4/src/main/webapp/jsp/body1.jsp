@@ -52,6 +52,7 @@ pageEncoding="UTF-8" isErrorPage="true" isELIgnored="false" %>
         </li>
     </ul>
 </div>
+<%@include file="body2.jsp"%>
 </body>
 <script src="js/jquery.min.js"></script>
 <script  src="js/bootstrap.min.js"></script>

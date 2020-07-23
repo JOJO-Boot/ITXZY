@@ -17,4 +17,9 @@ public class LayoutController {
         model.addAttribute("description","真滴强");
         return "body1";
     }
+
+    @RequestMapping("/body")
+    public String body(){
+        return "body2";
+    }
 }
