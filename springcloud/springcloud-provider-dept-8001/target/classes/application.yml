@@ -1,0 +1,32 @@
+server:
+  port: 8001
+
+# mybatis 配置
+mybatis:
+  type-aliases-package: com.springcloud.pojo
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  config-location: classpath:mybatis/mybatis-config.xml
+
+#  spring配置
+spring:
+  application:
+    name: springcloud-provider-dept  #  使用 Ribbon 实现负载均衡 要保证 name 一致
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/task?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123456
+
+# Eureka 配置  连接Eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+  instance:
+    instance-id: SpringCloud  #更改 Status 中的描述信息
+    prefer-ip-address: true  #隐藏浏览器左下IP信息 true：显示 false:不显示
+#info 配置  （可以写一些自己的信息，多人开发可能会使用）
+info:
+  app.name: qqq
+  company.name: XXXXX
