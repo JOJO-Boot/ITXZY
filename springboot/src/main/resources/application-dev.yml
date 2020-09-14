@@ -31,3 +31,9 @@ spring:
 mybatis:
   type-aliases-package: com.springboot.pojo
   mapper-locations: classpath:mapper/*.xml
+#pagehelp
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
