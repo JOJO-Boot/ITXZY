@@ -1,0 +1,16 @@
+#father{
+}
+#father:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+#father>div{
+    background: orange;
+    width: 30%;
+    margin: 1%;
+    padding-top: 30%;
+    border-radius:10px;
+    float: left;
+}
+
