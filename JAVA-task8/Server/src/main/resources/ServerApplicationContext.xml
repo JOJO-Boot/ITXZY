@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--加载配置文件-->
+    <context:property-placeholder location="classpath:properties/db.properties"/>
+
+    <!--连接数据库-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+          destroy-method="close">
+        <property name="driverClassName" value="${db.driver}"/>
+        <property name="url" value="${db.url}"/>
+        <property name="username" value="${db.username}"/>
+        <property name="password" value="${db.password}"/>
+    </bean>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mapperLocations" value="classpath:mapper/TbstudentMapper.xml"/>
+    </bean>
+    <!--DAO接口所在包名-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+
+    <!--项目用RMI 服务端-->
+    <bean id="studentRMIServiceImp" class="com.service.imp.TbstudentServiceImp"> </bean>
+    <bean id="StudentRMIService"  class="org.springframework.remoting.rmi.RmiServiceExporter">
+        <property name="service" ref="studentRMIServiceImp"></property>
+        <property name="serviceName" value="studentRmi"></property>
+        <property name="serviceInterface" value="com.service.TbstudentService"></property>
+        <property name="registryPort" value="1111"></property>
+    </bean>
+     <!--    测试用    RMI服务端-->
+<!--        <bean id="helloRMIServiceImpl" class="rmitest.imp.HelloRMIServiceImp"> </bean>&lt;!&ndash;服务端的接口实现类&ndash;&gt;-->
+<!--        <bean id="ServerRmiTest"  class="org.springframework.remoting.rmi.RmiServiceExporter">&lt;!&ndash;Spring中 Bean ID&ndash;&gt;-->
+<!--            <property name="service" ref="helloRMIServiceImpl"></property>&lt;!&ndash;服务端名称&ndash;&gt;-->
+<!--            <property name="serviceName" value="serverRmiTest"></property>&lt;!&ndash;客户端名称&ndash;&gt;-->
+<!--            <property name="serviceInterface" value="rmitest.HelloRMIService"></property>&lt;!&ndash;服务端接口&ndash;&gt;-->
+<!--            <property name="registryPort" value="1021"></property>&lt;!&ndash;注册端口号&ndash;&gt;-->
+<!--        </bean>-->
+
+</beans>

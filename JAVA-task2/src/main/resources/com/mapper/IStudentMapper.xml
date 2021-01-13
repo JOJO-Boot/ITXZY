@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.IStudentMapper">
+    <!--增加-->
+    <insert id="insertStudent" parameterType="com.bean.Student">
+        INSERT INTO tbstudent
+        (createAt,
+        name,
+        qq,
+        type,
+        city,
+        enterAt,
+        school,
+        onlineId,
+        link,
+        desire,
+        bro,
+        updateAt,
+        knowFrom )
+        VALUES
+        (#{createAt},
+        #{name},
+        #{qq},
+        #{type},
+        #{city},
+        #{enterAt},
+        #{school},
+        #{onlineId},
+        #{link},
+        #{desire},
+        #{bro},
+        #{updateAt},
+        #{knowFrom})
+    </insert>
+
+    <!--删除-->
+    <delete id="deleteStudent" parameterType="Integer">
+        DELETE FROM tbstudent WHERE id =#{id}
+    </delete>
+
+    <!--修改-->
+    <update id="updateStudent" parameterType="com.bean.Student">
+        UPDATE tbstudent SET
+        createAt=#{createAt},
+        name=#{name},
+        qq=#{qq},
+        type=#{type},
+        city=#{city},
+        enterAt=#{enterAt},
+        school=#{school},
+        onlineId=#{onlineId},
+        link=#{link},
+        desire=#{desire},
+        bro=#{bro},
+        updateAt=#{updateAt},
+        knowFrom=#{knowFrom}
+        WHERE
+        id=#{id}
+    </update>
+
+    <!--id查询-->
+    <select id="findStudentById" parameterType="Integer" resultType="com.bean.Student">
+        SELECT * FROM tbstudent WHERE id = #{sid}
+    </select>
+
+    <!--名字查询-->
+    <select id="findStudentByName" resultType="com.bean.Student">
+        SELECT * FROM tbstudent WHERE name LIKE CONCAT('%',#{nameStr},'%')
+    </select>
+
+    <!--查询所有-->
+    <select id="findAll" resultType="com.bean.Student">
+        SELECT * FROM tbstudent
+    </select>
+</mapper>
