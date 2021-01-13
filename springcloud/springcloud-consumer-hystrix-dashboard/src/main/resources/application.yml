@@ -1,8 +1,0 @@
-server:
-  port: 9001
-
-# 禁止向 Eureka注册微服务
-eureka:
-  client:
-    register-with-eureka: false
-    fetch-registry: false
